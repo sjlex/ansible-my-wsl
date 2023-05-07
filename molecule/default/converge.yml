@@ -1,0 +1,11 @@
+---
+- name: "Converge"
+  hosts: all
+
+  roles:
+    - bar
+
+  tasks:
+    - name: "Include task"
+      ansible.builtin.include_tasks:
+        file: "../../tasks/hello.yml"

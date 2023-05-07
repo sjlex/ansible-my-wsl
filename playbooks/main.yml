@@ -1,0 +1,13 @@
+---
+- name: "Main playbook"
+  hosts: all
+  remote_user: root
+
+  roles:
+    - bar
+    - sjlex.collection.baz
+
+  tasks:
+    - name: "Include task"
+      ansible.builtin.include_tasks:
+        file: "../tasks/hello.yml"

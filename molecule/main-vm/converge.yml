@@ -1,0 +1,7 @@
+---
+- name: "Converge"
+  hosts: all
+  gather_facts: false
+
+- name: "Include a playbook"
+  ansible.builtin.import_playbook: "../../playbooks/main.yml"

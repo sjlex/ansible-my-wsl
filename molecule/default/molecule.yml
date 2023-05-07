@@ -1,0 +1,33 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+
+driver:
+  name: docker
+
+platforms:
+  # Debian 12 - Bookworm
+  - name: playbook.main_debian12-${MOLECULE_INSTANCE_ID}
+    image: "python:3.11.4-bookworm"
+    pre_build_image: true
+
+  # Debian 11 - Bullseye
+  - name: playbook.main_debian11-${MOLECULE_INSTANCE_ID}
+    image: "python:3.11.4-bullseye"
+    pre_build_image: true
+
+  # Debian 10 - Buster
+  - name: playbook.main_debian10-${MOLECULE_INSTANCE_ID}
+    image: "python:3.11.4-buster"
+    pre_build_image: true
+
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: "../../roles"
+
+verifier:
+  name: testinfra
