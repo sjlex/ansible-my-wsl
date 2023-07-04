@@ -1,0 +1,8 @@
+---
+# vars file for base
+
+__base_packages:
+  - curl
+  - wget
+  - gnupg
+  - build-essential

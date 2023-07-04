@@ -1,7 +1,7 @@
 ---
 roles: []
+
 collections:
   - name: sjlex.collection
     source: https://github.com/sjlex/ansible-my-collection
     type: git
-    version: 0.1.0

@@ -10,17 +10,17 @@ driver:
 
 platforms:
   # Debian 12 - Bookworm
-  - name: playbook.main_debian12-${MOLECULE_INSTANCE_ID}
+  - name: playbook-main_debian12_${MOLECULE_INSTANCE_ID}
     image: "python:3.11.4-bookworm"
     pre_build_image: true
 
   # Debian 11 - Bullseye
-  - name: playbook.main_debian11-${MOLECULE_INSTANCE_ID}
+  - name: playbook-main_debian11_${MOLECULE_INSTANCE_ID}
     image: "python:3.11.4-bullseye"
     pre_build_image: true
 
   # Debian 10 - Buster
-  - name: playbook.main_debian10-${MOLECULE_INSTANCE_ID}
+  - name: playbook-main_debian10_${MOLECULE_INSTANCE_ID}
     image: "python:3.11.4-buster"
     pre_build_image: true
 

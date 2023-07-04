@@ -1,0 +1,23 @@
+---
+- name: "Prepare"
+  hosts: all
+  remote_user: "root"
+
+  tasks:
+    - name: "Install packages"
+      become: true
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        update_cache: true
+        cache_valid_time: 3600
+      loop:
+        - sudo
+        - acl
+
+    - name: "Configuration sudo"
+      become: true
+      ansible.builtin.copy:
+        dest: "/etc/sudoers.d/nopasswd"
+        mode: 0440
+        content: |
+          %sudo ALL=(ALL) NOPASSWD: ALL

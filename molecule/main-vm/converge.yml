@@ -1,7 +1,14 @@
 ---
 - name: "Converge"
   hosts: all
-  gather_facts: false
+  remote_user: "ansible"
+
+  tasks:
+    - name: "Get current_group_var_file"
+      ansible.builtin.set_fact:
+        current_group_var_file: "{{ playbook_dir }}/group_vars/wsl2.yml"
 
 - name: "Include a playbook"
-  ansible.builtin.import_playbook: "../../playbooks/main.yml"
+  ansible.builtin.import_playbook: "../../playbooks/wsl2.yml"
+  vars:
+    group_var_file: "{{ current_group_var_file }}"

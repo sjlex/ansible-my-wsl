@@ -1,0 +1,12 @@
+---
+- name: "Create a login user"
+  become: true
+  become_user: root
+  ansible.builtin.user:
+    name: "{{ user_name }}"
+    uid: "{{ user_uid }}"
+    groups: "{{ user_groups }}"
+    append: true
+    shell: "{{ user_shell }}"
+    create_home: true
+    state: present

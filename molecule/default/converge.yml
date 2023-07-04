@@ -1,11 +1,7 @@
 ---
 - name: "Converge"
   hosts: all
+  remote_user: "ansible"
 
-  roles:
-    - bar
-
-  tasks:
-    - name: "Include task"
-      ansible.builtin.include_tasks:
-        file: "../../tasks/hello.yml"
+- name: "Include a playbook"
+  ansible.builtin.import_playbook: "../../playbooks/wsl2.yml"

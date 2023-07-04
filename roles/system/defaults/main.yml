@@ -1,0 +1,5 @@
+---
+# defaults file for system
+
+system_update_repository: true
+system_upgrade: true
