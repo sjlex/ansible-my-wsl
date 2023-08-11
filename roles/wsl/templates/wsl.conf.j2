@@ -1,0 +1,17 @@
+[wsl2]
+{% if wsl_memory != '' %}
+memory = {{ wsl_memory }}
+{% endif %}
+
+[user]
+{% if wsl_user_name != '' %}
+default = {{ wsl_user_name }}
+{% endif %}
+
+[automount]
+root = /
+options = "metadata"
+
+[interop]
+enabled = true
+appendWindowsPath = true

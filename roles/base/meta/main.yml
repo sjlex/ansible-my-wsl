@@ -1,0 +1,19 @@
+galaxy_info:
+  role_name: base
+  author: sjlex
+  description: An Ansible role to base configure.
+  license: MIT
+
+  min_ansible_version: "2.1"
+
+  platforms:
+    - name: Debian
+      versions:
+      - bookworm
+      - bullseye
+      - buster
+
+  galaxy_tags:
+    - base
+
+dependencies: []

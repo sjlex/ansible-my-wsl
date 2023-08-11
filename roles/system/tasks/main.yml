@@ -1,0 +1,24 @@
+---
+- name: "Role: system"
+  tags:
+    - system
+    - generic
+  when:
+    - ansible_facts['distribution'] == 'Debian'
+    - ansible_facts['distribution_major_version'] == "12" or
+      ansible_facts['distribution_major_version'] == "11" or
+      ansible_facts['distribution_major_version'] == "10"
+  block:
+    - name: "Update repository"
+      when: system_update_repository
+      ansible.builtin.include_tasks:
+        file: update-repository.yml
+
+    - name: "Upgrade system"
+      when: system_upgrade
+      ansible.builtin.include_tasks:
+        file: upgrade-system.yml
+
+    - name: "Install packages"
+      ansible.builtin.include_tasks:
+        file: install-packages.yml

@@ -1,0 +1,42 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+
+platforms:
+  # Debian 12 - Bookworm
+  - name: playbook-main-debian12-${MOLECULE_INSTANCE_ID}
+    box: "debian/bookworm64"
+    pre_build_image: true
+    cpu: 2
+    memory: 1024
+
+  # Debian 11 - Bullseye
+  - name: playbook-main-debian11-${MOLECULE_INSTANCE_ID}
+    box: "debian/bullseye64"
+    pre_build_image: true
+    cpu: 2
+    memory: 1024
+
+  # Debian 10 - Buster
+  - name: playbook-main-debian10-${MOLECULE_INSTANCE_ID}
+    box: "debian/buster64"
+    pre_build_image: true
+    cpu: 2
+    memory: 1024
+
+provisioner:
+  name: ansible
+  env:
+    VAGRANT_DEFAULT_PROVIDER: libvirt
+    ANSIBLE_ROLES_PATH: "../../roles"
+
+verifier:
+  name: testinfra

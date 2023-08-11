@@ -1,0 +1,7 @@
+---
+- name: "Converge"
+  hosts: all
+  remote_user: "ansible"
+
+- name: "Include a playbook"
+  ansible.builtin.import_playbook: "../../playbooks/wsl2.yml"

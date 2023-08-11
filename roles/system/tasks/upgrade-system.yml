@@ -1,0 +1,6 @@
+---
+- name: "Upgrade system"
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    upgrade: dist

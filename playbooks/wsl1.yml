@@ -1,0 +1,81 @@
+---
+- name: "WSL-1 Playbook"
+  hosts: all
+  remote_user: "root"
+  tags:
+    - generic
+
+  pre_tasks:
+    - name: "Include external var file"
+      ansible.builtin.include_vars: "{{ item }}"
+      loop:
+        - "{{ group_var_file | default('group_vars/wsl1.yml') }}"
+
+  roles:
+    # --------------------------------------------------------------------------
+    # Generic
+    # --------------------------------------------------------------------------
+
+    # System
+    - role: system
+
+    # Base
+    - role: base
+
+    # User
+    - role: user
+
+    # --------------------------------------------------------------------------
+    # Environment
+    # --------------------------------------------------------------------------
+
+    # WSL
+    - role: wsl
+
+- name: "WSL-1 Playbook"
+  hosts: all
+  become: true
+  become_user: "{{ user_name }}"
+  remote_user: "{{ user_name }}"
+  tags:
+    - apps
+    - services
+
+  roles:
+    # --------------------------------------------------------------------------
+    # Shell
+    # --------------------------------------------------------------------------
+
+    # Shell
+    - role: fish
+    - role: tmux
+    - role: tmuxinator
+
+    # --------------------------------------------------------------------------
+    # Apps / Services
+    # --------------------------------------------------------------------------
+
+    # Git
+    - role: sjlex.collection.git
+
+    # Docker
+    - role: sjlex.collection.docker
+    - role: sjlex.collection.lazydocker
+
+    # Text editors
+    - role: sjlex.collection.nano
+    - role: sjlex.collection.neovim
+
+    # Utils
+    - role: sjlex.collection.bat
+    - role: sjlex.collection.exa
+    - role: sjlex.collection.fzf
+
+    # File managers
+    - role: sjlex.collection.mc
+    - role: sjlex.collection.broot
+
+    # Monitoring
+    - role: sjlex.collection.btop
+    - role: sjlex.collection.htop
+    - role: sjlex.collection.ncdu
