@@ -5,7 +5,7 @@
 ## Supported Operating Systems
 
 | Platform | Versions                   |
-|----------|----------------------------|
+| -------- | -------------------------- |
 | Debian   | Buster, Bullseye, Bookworm |
 
 ## Install WSL-distribution
@@ -98,13 +98,13 @@ task dependencies:dev:install
 
 ```shell
 cd roles/fish
- ```
+```
 
 Run molecule test:
 
 ```shell
 molecule test
- ```
+```
 
 or
 
@@ -114,19 +114,19 @@ molecule converge &&
 molecule idempotence &&
 molecule verify &&
 molecule destroy
- ```
+```
 
 #### 3.2 Playbooks
 
 - Molecule default scenario (docker):
-  
+
   ```shell
   molecule create -s default &&
   molecule converge -s default &&
   molecule verify -s default &&
   molecule destroy -s default
-   ```
-  
+  ```
+
 - Molecule VM scenario (vagrant + libvirt + qemu):
 
   ```shell
@@ -134,7 +134,7 @@ molecule destroy
   molecule converge -s main-vm &&
   molecule verify -s main-vm &&
   molecule destroy -s main-vm
-   ```
+  ```
 
 ### 4. Testing
 
@@ -142,33 +142,33 @@ molecule destroy
 
 ```shell
 task test:role:all
- ```
+```
 
 or (specific role):
 
 ```shell
 task test:role -- fish
- ```
+```
 
 #### 4.2 Playbooks
 
 ```shell
 task test:integration:all
- ```
+```
 
 or (specific scenario):
 
 ```shell
 task test:integration:default
 task test:integration:main-vm
- ```
+```
 
 ### 5. Linting
 
 ```shell
-molecule lint
-molecule lint:fix
- ```
+task lint
+task lint:fix
+```
 
 ## License
 

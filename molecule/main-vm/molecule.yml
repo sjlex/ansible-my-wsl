@@ -25,12 +25,13 @@ platforms:
     cpu: 2
     memory: 1024
 
-  # Debian 10 - Buster
-  - name: playbook-main-debian10-${MOLECULE_INSTANCE_ID}
-    box: "debian/buster64"
-    pre_build_image: true
-    cpu: 2
-    memory: 1024
+  # DEPRECATED
+  # # Debian 10 - Buster
+  # - name: playbook-main-debian10-${MOLECULE_INSTANCE_ID}
+  #   box: "debian/buster64"
+  #   pre_build_image: true
+  #   cpu: 2
+  #   memory: 1024
 
 provisioner:
   name: ansible

@@ -5,3 +5,10 @@ collections:
   - name: sjlex.collection
     source: https://github.com/sjlex/ansible-my-collection
     type: git
+    version: "v1.1.0"
+
+# # Installing collections from a local path
+# collections:
+#   - name: "/mnt/ansible-my-collection"
+#     type: dir
+#     version: "1.1.0"
